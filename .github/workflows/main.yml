@@ -17,6 +17,9 @@ jobs:
         client-id: 1f713f69-30b5-404a-9213-c85604ab921c
         tenant-id: b511aa26-fbd4-46c6-bd77-c84dcc046ce1
         subscription-id: 009fad33-c09c-4841-af38-57dd79870d40
+
+    - name: Show identity
+      run: az ad sp show --id $(az account show --query user.name -o tsv)
     
     - uses: actions/setup-go@v6
       with:
