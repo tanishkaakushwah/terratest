@@ -10,31 +10,18 @@ resource "azurerm_key_vault" "kv" {
   soft_delete_retention_days  = 7
   purge_protection_enabled    = true
   sku_name = "standard"
+  rbac_authorization_enabled = true  
+}
 
+resource "azurerm_role_assignment" "kv_secrets_user" {
+  for_each = var.key_vaults
+  scope                = azurerm_key_vault.kv[each.key].id
+  role_definition_name = "Key Vault Secrets Officer"
+  principal_id         = data.azurerm_client_config.current.object_id
+}
 
-  access_policy {
-    tenant_id = data.azurerm_client_config.current.tenant_id
-    object_id = data.azurerm_client_config.current.object_id
-
-    key_permissions = [
-      "Get",
-    ]
-
-    secret_permissions = [
-      "Backup",
-      "Delete",
-      "Get",
-      "List",
-      "Purge",
-      "Recover",
-      "Restore",
-      "Set"
-    ]
-
-    storage_permissions = [
-      "Get",
-    ]
-  }
+output "object_id"{
+  value=data.azurerm_client_config.current.object_id
 }
 
 resource "azurerm_key_vault_secret" "username" {
