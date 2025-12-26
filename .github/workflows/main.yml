@@ -1,0 +1,38 @@
+run-name: Integrate Terratest in Infra CICD
+on:
+  workflow_dispatch:
+jobs:
+  terratest_chlao:
+    runs-on: ubuntu-latest      
+    steps:
+    
+    - uses: actions/checkout@v5
+
+    - name: Azure Login (OIDC)
+      uses: Azure/login@v2
+      with:
+        client-id: 1f713f69-30b5-404a-9213-c85604ab921c
+        tenant-id: b511aa26-fbd4-46c6-bd77-c84dcc046ce1
+        subscription-id: 009fad33-c09c-4841-af38-57dd79870d40
+    
+    - uses: actions/setup-go@v6
+      with:
+        go-version: '1.23'
+
+    - uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: "1.14.0"
+
+    - run: |
+        go version
+        terraform version
+
+    - run: |
+        go mod tidy
+
+    - run: |
+        go test ./test -v
+        
+
+
+    
