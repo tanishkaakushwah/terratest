@@ -20,6 +20,7 @@ module "key_vault" {
   source     = "../../modules/azurerm_key_vault"
   key_vaults = var.key_vaults
   secrets = var.secrets
+  principal = var.principal
 }
 
 module "sql_server" {
