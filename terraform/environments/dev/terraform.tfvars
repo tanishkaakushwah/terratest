@@ -63,9 +63,7 @@ key_vaults = {
   }
 }
 
-principal = {
-  object_id = "b04c46bc-1861-4ca3-aab8-52903b7eafff" 
-}
+spn_object_id = "b04c46bc-1861-4ca3-aab8-52903b7eafff" 
 
 # to get service principal id
 # az ad sp show --id 1f713f69-30b5-404a-9213-c85604ab921c --query "{displayName:displayName, spObjectId:id, appId:appId}" -o table

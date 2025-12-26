@@ -10,7 +10,7 @@ variable "rgs" {
 variable "networks" {}
 variable "public_ips" {}
 variable "key_vaults" {}
-variable "principal" {}
+variable "spn_object_id" {}
 variable "secrets" {
   type = map(object({
     username = string
