@@ -1,6 +1,9 @@
 run-name: Integrate Terratest in Infra CICD
 on:
   workflow_dispatch:
+permissions:
+  id-token: write
+  contents: read
 jobs:
   terratest_chlao:
     runs-on: ubuntu-latest      
