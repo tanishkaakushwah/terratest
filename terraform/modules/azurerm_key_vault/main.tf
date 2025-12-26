@@ -35,13 +35,6 @@ resource "azurerm_key_vault" "kv" {
       "Get",
     ]
   }
-   network_acls {
-     default_action = "Deny"
-      bypass = "AzureServices"
-        ip_rules = [
-    "157.49.74.204"
-  ]
-   }
 }
 
 resource "azurerm_key_vault_secret" "username" {

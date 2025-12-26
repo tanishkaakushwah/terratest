@@ -27,7 +27,7 @@ resource "azurerm_mssql_server" "sql_server" {
 }
 
 resource "azurerm_storage_account" "audit" {
-  name                     = "stsqlauditrgdev01"
+  name                     = "stsqlauuditrgdev01"
   resource_group_name      = var.rg_name
   location                 = var.location
   account_tier             = "Standard"
