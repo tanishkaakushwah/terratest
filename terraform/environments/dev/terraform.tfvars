@@ -57,7 +57,7 @@ public_ips = {
 
 key_vaults = {
   kv1 = {
-    kv_name  = "seiara-dev-kv"
+    kv_name  = "seiarra-dev-kv"
     location = "centralindia"
     rg_name  = "rg-pilu-dev-todoapp-01"
   }
@@ -94,7 +94,7 @@ vm = {
     pip_name    = "pip-pilu-dev-todoapp-01"
     vm_name     = "frontend-vm"
     size        = "Standard_D2as_v5"
-    kv_name     = "seiara-dev-kv"
+    kv_name     = "seiarra-dev-kv"
     secret_username = "frontend-vm-username"
     secret_password = "frontend-vm-passwd"
     source_image_reference = {
@@ -137,7 +137,7 @@ vm = {
     pip_name    = "pip-pilu-dev-todoapp-02"
     vm_name     = "backend-vm"
     size        = "Standard_D2as_v5"
-    kv_name     = "seiara-dev-kv"
+    kv_name     = "seiarra-dev-kv"
     secret_username = "backend-vm-username"
     secret_password = "backend-vm-passwd"
     source_image_reference = {
