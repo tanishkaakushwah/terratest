@@ -18,8 +18,5 @@ func TestTerraformDev(t *testing.T) {
 	output := terraform.Output(t, tf, "resource_group_name")
 if output == "" {
     t.Fatal("resource_group_name should not be empty")
-
-	keyvaultObjectID := terraform.Output(t, tf, "kv_object_id")
-	t.Logf("KeyVault Object ID (from parent module): %s", keyvaultObjectID)
 }
 }

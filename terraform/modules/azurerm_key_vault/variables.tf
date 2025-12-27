@@ -6,4 +6,4 @@ variable "secrets" {
 
 }
 
-variable "object_id" {}
+# variable "object_id" {}

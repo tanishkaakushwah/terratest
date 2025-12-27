@@ -37,7 +37,7 @@ jobs:
         go mod tidy
 
     - run: |
-        go test ./test -v
+        go test ./test -v -timeout 30m
         
 
 

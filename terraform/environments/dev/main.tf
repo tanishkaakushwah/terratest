@@ -20,7 +20,7 @@ module "key_vault" {
   source     = "../../modules/azurerm_key_vault"
   key_vaults = var.key_vaults
   secrets = var.secrets
-  object_id = var.spn_object_id
+  # object_id = var.spn_object_id
 }
 
 module "sql_server" {

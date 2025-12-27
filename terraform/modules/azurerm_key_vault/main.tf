@@ -22,7 +22,7 @@ resource "azurerm_role_assignment" "kv_secrets_user" {
   for_each = var.key_vaults
   scope                = azurerm_key_vault.kv[each.key].id
   role_definition_name = "Key Vault Secrets Officer"
-  principal_id         = var.object_id
+  principal_id         = data.azurerm_client_config.current.object_id
 }
 
 resource "time_sleep" "wait_for_kv_rbac" {
