@@ -11,6 +11,11 @@ resource "azurerm_key_vault" "kv" {
   purge_protection_enabled    = true
   sku_name = "standard"
   rbac_authorization_enabled = true  
+  
+    network_acls {
+    default_action = "Allow"
+    bypass         = "AzureServices"
+  }
 }
 
 resource "azurerm_role_assignment" "kv_secrets_user" {
@@ -20,11 +25,20 @@ resource "azurerm_role_assignment" "kv_secrets_user" {
   principal_id         = var.object_id
 }
 
+resource "time_sleep" "wait_for_kv_rbac" {
+  depends_on = [
+    azurerm_role_assignment.kv_secrets_user
+  ]
+  create_duration = "180s"
+}
+
 output "object_id"{
   value=data.azurerm_client_config.current.object_id
 }
 
+
 resource "azurerm_key_vault_secret" "username" {
+  depends_on = [time_sleep.wait_for_kv_rbac]
   for_each= var.secrets
   name         = "${each.key}-username"
   value        = each.value.username
@@ -32,8 +46,10 @@ resource "azurerm_key_vault_secret" "username" {
 }
 
 resource "azurerm_key_vault_secret" "passwords" {
+  depends_on = [time_sleep.wait_for_kv_rbac]
   for_each= var.secrets
   name         = "${each.key}-passwd"
   value        = each.value.password
   key_vault_id = azurerm_key_vault.kv["kv1"].id
 }
+
