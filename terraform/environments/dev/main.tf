@@ -29,7 +29,7 @@ module "sql_server" {
   sql_server_name = "sql-dev-todo-4983"
   rg_name         = "rg-pilu-dev-todoapp-01"
   location        = "centralindia"
-  kv_name = "kv-dev-tani"
+  kv_name = var.key_vaults["kv1"].kv_name
   secret_username  = "sql-server-username"
   secret_password  = "sql-server-passwd"
   tags            = {}
