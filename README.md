@@ -1,4 +1,4 @@
-# Terratest for Terraform (Azure)
+# 🧪Terratest for Terraform (Azure)
 
 This repository demonstrates how to use **Terratest** to validate **Terraform-provisioned Azure infrastructure** by running real tests against deployed resources and cleaning them up automatically.
 
